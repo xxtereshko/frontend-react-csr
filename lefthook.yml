@@ -1,0 +1,13 @@
+commit-msg:
+  commands:
+    validate:
+      run: >
+        npx git-conventional-commits commit-msg-hook {1}
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:misc:
+      glob: '*.{html,json,yml,[tj]s,[tj]sx}'
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
