@@ -3,7 +3,7 @@
   "bracketSameLine": true,
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "ignore",
-  "printWidth": 100,
+  "printWidth": 85,
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,
