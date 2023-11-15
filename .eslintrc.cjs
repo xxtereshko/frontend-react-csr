@@ -7,7 +7,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
-    'plugin:@typescript-eslint/stylistic-type-checked',
+    // 'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended'
@@ -33,28 +33,29 @@ module.exports = {
         allowConstantExport: true
       }
     ],
+
+    /**
+     * Codestyle */
+
     'perfectionist/sort-array-includes': [
       'warn',
       {
         type: 'natural',
-        order: 'asc',
-        'ignore-case': false
+        order: 'asc'
       }
     ],
     'perfectionist/sort-enums': [
       'warn',
       {
         type: 'natural',
-        order: 'asc',
-        'ignore-case': false
+        order: 'asc'
       }
     ],
     'perfectionist/sort-exports': [
       'warn',
       {
         type: 'natural',
-        order: 'asc',
-        'ignore-case': false
+        order: 'asc'
       }
     ],
     'perfectionist/sort-imports': [
@@ -62,20 +63,34 @@ module.exports = {
       {
         groups: [
           'type',
+          'react',
           ['builtin', 'external'],
+          'fsd',
           'internal-type',
           'internal',
           ['parent-type', 'sibling-type', 'index-type'],
           ['parent', 'sibling', 'index'],
+          'side-effect',
+          'style',
           'object',
           'unknown'
         ],
         'custom-groups': {
-          value: {},
-          type: {}
+          value: {
+            react: ['react', 'react-dom/*'],
+            fsd: [
+              '@app/**',
+              '@entities/**',
+              '@pages/**',
+              '@shared/**',
+              '@widgets/**'
+            ]
+          },
+          type: {
+            react: ['react', 'react-dom/*']
+          }
         },
-        'newlines-between': 'always',
-        'internal-pattern': ['@shared/*']
+        'newlines-between': 'always'
       }
     ],
     'perfectionist/sort-interfaces': [
@@ -83,11 +98,12 @@ module.exports = {
       {
         type: 'natural',
         order: 'asc',
-        'ignore-case': false, //TODO: add onClick bottom
+        groups: ['id', 'unknown', 'shorthand', 'predicate', 'callback'],
         'custom-groups': {
-          top: 'id'
-        },
-        groups: ['top', 'multiline']
+          id: 'id',
+          predicate: 'is[A-Z]*',
+          callback: 'on[A-Z]*'
+        }
       }
     ],
     'perfectionist/sort-jsx-props': [
@@ -95,11 +111,67 @@ module.exports = {
       {
         type: 'natural',
         order: 'asc',
-        'ignore-case': false,
+        groups: ['key', 'id', 'unknown', 'shorthand', 'predicate', 'callback'],
         'custom-groups': {
-          callbacks: 'on*'
-        },
-        groups: ['shorthand', 'multiline', 'callbacks', 'unknown']
+          key: 'key',
+          id: 'id',
+          predicate: 'is[A-Z]*',
+          callback: 'on[A-Z]*'
+        }
+      }
+    ],
+    'perfectionist/sort-maps': [
+      'warn',
+      {
+        type: 'natural',
+        order: 'asc'
+      }
+    ],
+    'perfectionist/sort-named-exports': [
+      'warn',
+      {
+        type: 'natural',
+        order: 'asc'
+      }
+    ],
+    'perfectionist/sort-named-imports': [
+      'warn',
+      {
+        type: 'natural',
+        order: 'asc'
+      }
+    ],
+    'perfectionist/sort-object-types': [
+      'warn',
+      {
+        type: 'natural',
+        order: 'asc',
+        groups: ['id', 'unknown', 'shorthand', 'predicate', 'callback'],
+        'custom-groups': {
+          id: 'id',
+          predicate: 'is[A-Z]*',
+          callback: 'on[A-Z]*'
+        }
+      }
+    ],
+    'perfectionist/sort-objects': [
+      'warn',
+      {
+        type: 'natural',
+        order: 'asc',
+        groups: ['id', 'unknown', 'shorthand', 'predicate', 'callback'],
+        'custom-groups': {
+          id: 'id',
+          predicate: 'is[A-Z]*',
+          callback: 'on[A-Z]*'
+        }
+      }
+    ],
+    'perfectionist/sort-union-types': [
+      'warn',
+      {
+        type: 'natural',
+        order: 'asc'
       }
     ]
   }
